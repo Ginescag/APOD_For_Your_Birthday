@@ -4,25 +4,28 @@ import json
 from PIL import Image
 import webbrowser
 
+#returns the response from the api in json format
 def get_raw(api_key):
     raw_response = requests.get(api_key)
     return raw_response
 
+#returns the response from the api in a string
 def get_data(api_key):
     raw_response = requests.get(api_key).text
     response = json.loads(raw_response)
     return response
 
+#parses the string and returns the date of the response
 def get_date(response):
     date = response['date']
     return date
 
-
+#parses the string and returns the explaination of the response
 def get_explaination(response):
     explaination = response['explanation']
     return explaination
 
-
+#parses the string and returns the hdurl of the response
 def get_hdurl(response):
     hdurl = response['hdurl']
     return hdurl
